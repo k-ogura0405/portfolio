@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - 小倉 煌大</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <nav class="topnav">
+            <a href="TOP.html#top">TOP</a>&nbsp;&nbsp;
+            <a href="TOP.html#program">PROGRAM</a>&nbsp;&nbsp;
+            <a href="TOP.html#about">ABOUT</a>&nbsp;&nbsp;
+            <a href="TOP.html#contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="detail-container">
+            <header class="detail-page-header">
+                <span id="detail-label" class="modal-label">PROJECT DETAIL</span>
+                <a href="TOP.html#program" class="btn-close-link">&times;</a>
+            </header>
+            <div class="detail-content-body">
+                <div class="modal-img-area">
+                    <img id="detail-img" src="" alt="Project Image">
+                </div>
+                <div class="modal-text-area">
+                    <h2 id="detail-title">TITLE</h2>
+                    <div id="detail-desc" style="white-space: pre-wrap; color: #ccc; line-height: 1.8;">DESCRIPTION</div>
+                    <a href="TOP.html#program" class="more" style="margin-top: 30px;">
+                        <span class="circle">←</span><span class="text">一覧に戻る</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">&copy; 2026 小倉 煌大</footer>
+
+    <script>
+        const projectData = {
+            'book1': { 
+                title: '図書管理アプリ', 
+                img: 'images/スクリーンショット 2026-02-05 235115.png', 
+                desc: 'PythonとMySQLを利用したフルスタックな管理システムです。' 
+            },
+            'movie': { 
+                title: '映画検索アプリ', 
+                img: 'images/スクリーンショット 2026-02-05 234926.png', 
+                desc: '2年後期のJavaFX期末課題として制作。TMDB APIを利用し、あらすじ、評価、Amazonリンクを表示します。' 
+            },
+            'highlow': { 
+                title: 'High&Lowアプリ', 
+                img: 'images/スクリーンショット 2025-12-12 093959.png', 
+                desc: 'JavaScriptとHTMLを使用したトランプゲームです。連続成功数（コンボ）表示機能を実装しています。' 
+            },
+            'climbcat': { 
+                title: 'ClimbCat', 
+                img: 'images/スクリーンショット 2025-12-12 095418.png', 
+                desc: 'UnityとC#を利用した2Dアクションゲームです。オート移動、壁反転、2段ジャンプを実装しています。' 
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (id && projectData[id]) {
+            document.getElementById('detail-title').innerText = projectData[id].title;
+            document.getElementById('detail-desc').innerText = projectData[id].desc;
+            document.getElementById('detail-img').src = projectData[id].img;
+            document.getElementById('detail-label').innerText = projectData[id].title + " ページ";
+            document.title = projectData[id].title + " - 小倉 煌大";
+        }
+    </script>
+</body>
+</html>
